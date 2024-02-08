@@ -1,6 +1,10 @@
 @import '../core/Variables.scss';
-.header{
-    background-color: $dark;
-    display: flex;
-    justify-content: center;
+.header {
+  background-color: $dark;
+  display: flex;
+  justify-content: center;
+  &__img {
+    width: 300px;
+    padding: 10px;
+  }
 }

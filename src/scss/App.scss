@@ -1,9 +1,10 @@
-@import 'core/reset.scss';
-@import 'core/variables';
+@import 'core/Variables.scss';
+@import 'core/Reset.scss';
 
 .main {
    // display: flex;
    // flex-direction: column;
    // justify-content: center;
    background-color: #1a1a1a;
+   height: fit-content;
 }

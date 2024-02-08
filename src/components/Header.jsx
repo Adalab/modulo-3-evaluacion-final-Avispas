@@ -5,7 +5,7 @@ import imgHeader from '../images/header.jpg';
 function Header() {
   return (
   <header className='header'>
-    <img src={imgHeader} alt="HarryPotter" />
+    <img src={imgHeader} alt="HarryPotter" className='header__img' />
   </header>
   );
 }
