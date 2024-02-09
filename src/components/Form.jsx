@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useState } from 'react';
 import '../scss/layout/Form.scss';
 
 function Form({ setName, setHouse }) {
@@ -26,7 +25,7 @@ function Form({ setName, setHouse }) {
           onChange={(ev) => {
             setHouse(ev.target.value);
           }}
-          className="form__label--input"
+          className="form__label--input opt"
           name="house"
           id="house"
         >

@@ -1,10 +1,6 @@
 @import 'core/Variables.scss';
 @import 'core/Reset.scss';
 
-.main {
-   // display: flex;
-   // flex-direction: column;
-   // justify-content: center;
-   background-color: #1a1a1a;
-   min-height: 100vh;
+.hidden{
+    display: none;
 }

@@ -1,9 +1,10 @@
 //Components
 import React, { useEffect, useState } from 'react';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import callToApi from '../services/Api';
 import Header from './Header';
-import Form from './Form';
-import List from './List';
+import Main from './Main';
+import CharacterDetail from './CharacterDetail';
 //Css
 import '../scss/App.scss';
 
@@ -13,14 +14,29 @@ function App() {
   const [data, setData] = useState([]);
   const [name, setName] = useState('');
   const [house, setHouse] = useState('Gryffindor');
-
-
+  const [hidden, setHidden] = useState('');
+  const [character, setCharacter] = useState({
+    name: '',
+    id: '',
+    species: '',
+    patronus: '',
+    ancestry: '',
+    image: '',
+    alive: '',
+    house: '',
+  });
+  const location = useLocation();
+   console.log(character)
   useEffect(() => {
     callToApi().then((response) => {
       setData(response);
     });
   }, []);
   console.log(data);
+
+  useEffect(() => {
+    setHidden(location.pathname === '/CharacterDetail');
+  }, [location.pathname]);
 
   const filterData = data.filter ((character) => {
     if (house === 'All'){
@@ -30,15 +46,18 @@ function App() {
     }
   })
   .filter ((character) => character.name.toLowerCase().includes(name.toLowerCase())) 
-  console.log(filterData)
+ // console.log(filterData)
 
   return (
     <>
       <Header />
-      <main className="main">
-        <Form setName={setName} setHouse={setHouse}/>
-        <List filterData={filterData}/>
-      </main>
+      {!hidden && (
+        <Main setName={setName} setHouse={setHouse} filterData={filterData} setCharacter={setCharacter} character={character}/>
+      )}
+      
+      <Routes>
+        <Route path='/CharacterDetail' element={<CharacterDetail character={character} />}/>
+      </Routes>
     </>
   );
 }

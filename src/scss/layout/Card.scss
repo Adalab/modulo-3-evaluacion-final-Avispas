@@ -4,25 +4,42 @@
     flex-direction: column;
     align-items: center;
     height: 350px;
-    width: 270px;   
- 
-    &__boxImg{
+    width: 270px;  
+     &__boxImg{
         height: 300px;
         width: 250px;
         border-radius: 50% 50% 50% 50%;
         box-shadow: 0px 0px 35px 4px #55534c;
-    }
-    &__boxImg img{
-        border: 3px solid;
+        &--img{
+            border: 3px solid;
         height: 300px;
         width: 250px;
         border-radius: 50% 50% 50% 50%;
         box-shadow: 0px 0px 35px 4px #55534c;
-    }
-    &__boxImg img:hover{
+        transition: transform 0.3s;
+        }
+        &--img:hover{
         box-shadow: 0px 0px 35px 4px #9e8c4d;
         cursor:pointer;
+        transform: scale(1.2);
+        }
+
     }
+    // &__boxImg img{
+    //     border: 3px solid;
+    //     height: 300px;
+    //     width: 250px;
+    //     border-radius: 50% 50% 50% 50%;
+    //     box-shadow: 0px 0px 35px 4px #55534c;
+    // }
+    // &__boxImg img:hover{
+    //     box-shadow: 0px 0px 35px 4px #9e8c4d;
+    //     cursor:pointer;
+    // }
+    // &__boxImg:hover{
+    //     box-shadow: 0px 0px 35px 4px #9e8c4d;
+    //     cursor:pointer;
+    // }
     &__boxText{
         box-shadow: 0px 0px 35px 4px #55534c;
         background-color: #55534c;
@@ -34,8 +51,18 @@
         position: relative;
         padding: 10px;
     }
+    // &__boxText:hover{
+    //     box-shadow: 0px 0px 35px 4px #9e8c4d;
+    //         cursor:pointer;
+    // }
 
 }
+.link {
+    text-decoration: none; /* quita el subrayado */
+    color: inherit; /* hereda el color del texto */
+    display: flex;
+    flex-direction: column;
+  }
 
 .imgLogo{
     position: absolute;
