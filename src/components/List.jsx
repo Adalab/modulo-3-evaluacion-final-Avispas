@@ -1,11 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Card from './Card';
 import '../scss/layout/List.scss'
 
-function List() {
+function List({data}) {
   return (
     <div className='list'>
-      <Card/>
+      <Card data={data}/>
       <Card/>
       <Card/>
       <Card/>
@@ -16,5 +17,7 @@ function List() {
   
   );
 }
-
+List.PropTypes = {
+  data: PropTypes.object.isRequired,
+}
 export default List;
