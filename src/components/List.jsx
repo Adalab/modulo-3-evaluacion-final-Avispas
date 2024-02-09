@@ -4,20 +4,17 @@ import Card from './Card';
 import '../scss/layout/List.scss'
 
 function List({data}) {
+
+  // map
   return (
     <div className='list'>
-      <Card data={data}/>
-      <Card/>
-      <Card/>
-      <Card/>
-      <Card/>
-      <Card/>
-      
-    </div>
-  
-  );
+    {data.map((data, index) => (
+      <Card key={index} data={data} />
+    ))}
+  </div>
+);
 }
-List.PropTypes = {
-  data: PropTypes.object.isRequired,
+List.propTypes = {
+  data: PropTypes.arrayOf(PropTypes.object).isRequired,
 }
 export default List;

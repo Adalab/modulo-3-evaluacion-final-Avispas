@@ -10,42 +10,34 @@ import callToApi from '../services/Api';
 
 //Function APP
 function App() {
+  const [data, setData] = useState([]);
+  const [searchName, setSearchName] = useState('');
 
-  const [data, setData] = useState({
-    name: data.name,
-    id: data.id,
-    species: data.species,
-    patronus: data.patronus,
-    ancestry: data. ancestry,
-    image: data.image,
-    alive: data.alive,
-   });
-
-   const [searchName, setSearchName] = useState ('');
-   useEffect ( () => {
-    callToApi().then ( (response) => {
+  useEffect(() => {
+    callToApi().then((response) => {
       setData(response);
-    })
-   }, [searchName]);
+    });
+  }, []);
+  console.log(data);
 
-   const handleSearch = (ev) => {
+  const handleInput = (ev) => {
     setSearchName(ev.target.value);
-   };
+  };
 
-   const renderData = () = {
-    return data.map ( (data, index) => {
-      
-    })
-   }
+  //  const renderData = () = {
+  //   return data.map ( (data, index) => {
+
+  //   })
+  //  }
 
   return (
     <>
-    <Header />
-    <main className='main'>
-      <Form/>
-      <List data={data}/>
-    </main>
-  </>
-  ); 
+      <Header />
+      <main className="main">
+        <Form handleInput={handleInput} />
+        <List data={data} searchName={searchName}/>
+      </main>
+    </>
+  );
 }
 export default App;
