@@ -3,18 +3,16 @@ import PropTypes from 'prop-types';
 import Card from './Card';
 import '../scss/layout/List.scss'
 
-function List({data}) {
-
-  // map
+function List({filterData}) {
   return (
     <div className='list'>
-    {data.map((data, index) => (
-      <Card key={index} data={data} />
+    {filterData.map((data, index) => (
+      <Card key={index} filterData={data} />
     ))}
   </div>
 );
 }
 List.propTypes = {
-  data: PropTypes.arrayOf(PropTypes.object).isRequired,
+  filterData: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
 }
 export default List;

@@ -1,17 +1,19 @@
 //Components
 import React, { useEffect, useState } from 'react';
+import callToApi from '../services/Api';
 import Header from './Header';
 import Form from './Form';
 import List from './List';
 //Css
 import '../scss/App.scss';
-import callToApi from '../services/Api';
-//Images
 
 //Function APP
 function App() {
+
   const [data, setData] = useState([]);
-  const [searchName, setSearchName] = useState('');
+  const [name, setName] = useState('');
+  const [house, setHouse] = useState('Gryffindor');
+
 
   useEffect(() => {
     callToApi().then((response) => {
@@ -20,22 +22,22 @@ function App() {
   }, []);
   console.log(data);
 
-  const handleInput = (ev) => {
-    setSearchName(ev.target.value);
-  };
-
-  //  const renderData = () = {
-  //   return data.map ( (data, index) => {
-
-  //   })
-  //  }
+  const filterData = data.filter ((character) => {
+    if (house === 'All'){
+      return true;
+    } else {
+      return character.house === house
+    }
+  })
+  .filter ((character) => character.name.toLowerCase().includes(name.toLowerCase())) 
+  console.log(filterData)
 
   return (
     <>
       <Header />
       <main className="main">
-        <Form handleInput={handleInput} />
-        <List data={data} searchName={searchName}/>
+        <Form setName={setName} setHouse={setHouse}/>
+        <List filterData={filterData}/>
       </main>
     </>
   );
