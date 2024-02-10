@@ -18,5 +18,6 @@ Main.propTypes = {
       .isRequired,
     setName: PropTypes.func.isRequired,
     setHouse: PropTypes.func.isRequired,
+   
   };
 export default Main

@@ -24,7 +24,7 @@ function CardText({filterData}) {
       {filterData.house}
     </div> 
     {houseImage && <img className='imgLogo' src={houseImage} alt={`logo${filterData.house}`} />}
-  </div>
+    </div>
   )
 }
 CardText.propTypes = {

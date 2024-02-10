@@ -1,18 +1,37 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Card from './Card';
-import '../scss/layout/List.scss'
+import '../scss/layout/List.scss';
 
-function List({filterData}) {
+import { Link } from 'react-router-dom';
+
+
+function List({ filterData }) {
+console.log (filterData);
+
   return (
-    <div className='list'>
-    {filterData.map((data, index) => (
-      <Card key={index} filterData={data} />
-    ))}
-  </div>
-);
+    <ul className="list">
+      {filterData.map((data) => (
+        <li className="card" key={data.id}>
+        <Link
+          to={`/CharacterDetail/${data.id}`}
+          className="link"   
+          data={data}                    
+        >
+        <Card
+          filterData={data}
+          />
+           </Link>
+    </li>
+      ))}
+    </ul>
+  );
 }
+
+
+
 List.propTypes = {
-  filterData: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
-}
+  filterData: PropTypes.oneOfType([PropTypes.array, PropTypes.object])
+    .isRequired,
+};
 export default List;

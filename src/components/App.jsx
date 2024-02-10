@@ -1,6 +1,6 @@
 //Components
 import React, { useEffect, useState } from 'react';
-import { Route, Routes, useLocation } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import callToApi from '../services/Api';
 import Header from './Header';
 import Main from './Main';
@@ -14,29 +14,13 @@ function App() {
   const [data, setData] = useState([]);
   const [name, setName] = useState('');
   const [house, setHouse] = useState('Gryffindor');
-  const [hidden, setHidden] = useState('');
-  const [character, setCharacter] = useState({
-    name: '',
-    id: '',
-    species: '',
-    patronus: '',
-    ancestry: '',
-    image: '',
-    alive: '',
-    house: '',
-  });
-  const location = useLocation();
-   console.log(character)
+  
   useEffect(() => {
     callToApi().then((response) => {
       setData(response);
     });
   }, []);
   console.log(data);
-
-  useEffect(() => {
-    setHidden(location.pathname === '/CharacterDetail');
-  }, [location.pathname]);
 
   const filterData = data.filter ((character) => {
     if (house === 'All'){
@@ -51,12 +35,10 @@ function App() {
   return (
     <>
       <Header />
-      {!hidden && (
-        <Main setName={setName} setHouse={setHouse} filterData={filterData} setCharacter={setCharacter} character={character}/>
-      )}
-      
+     
       <Routes>
-        <Route path='/CharacterDetail' element={<CharacterDetail character={character} />}/>
+        <Route path='/' element={ <Main setName={setName} setHouse={setHouse} filterData={filterData} />}/>
+        <Route path='/CharacterDetail/:characterName' element={<CharacterDetail data={data} />}/>
       </Routes>
     </>
   );
