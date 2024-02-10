@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import callToApi from '../services/Api';
+import ls from '../services/LocalSotrage.js';
 import Header from './Header';
 import Main from './Main';
 import CharacterDetail from './CharacterDetail';
@@ -12,8 +13,8 @@ import '../scss/App.scss';
 function App() {
 
   const [data, setData] = useState([]);
-  const [name, setName] = useState('');
-  const [house, setHouse] = useState('Gryffindor');
+  const [name, setName] = useState(ls.get('data', {}).name || '');
+  const [house, setHouse] = useState(ls.get('data', {}).house || 'Gryffindor');
   
   useEffect(() => {
     callToApi().then((response) => {
@@ -31,13 +32,23 @@ function App() {
   })
   .filter ((character) => character.name.toLowerCase().includes(name.toLowerCase())) 
  // console.log(filterData)
+  useEffect (()=> {
+    ls.set('data', {
+      name: name,
+      select: house,
+    })
+  }, [name, house]);
+
+  const handleReset = () => {
+    ls.clear()
+  };
+
 
   return (
     <>
-      <Header />
-     
+      <Header />     
       <Routes>
-        <Route path='/' element={ <Main setName={setName} setHouse={setHouse} filterData={filterData} />}/>
+        <Route path='/' element={ <Main setName={setName} setHouse={setHouse} filterData={filterData} name={name} house={house} handleReset={handleReset} />}/>
         <Route path='/CharacterDetail/:characterName' element={<CharacterDetail data={data} />}/>
       </Routes>
     </>

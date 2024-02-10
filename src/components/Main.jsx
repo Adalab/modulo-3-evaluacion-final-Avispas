@@ -5,10 +5,10 @@ import List from './List';
 import '../scss/layout/Main.scss';
 
 
-function Main({setName, setHouse, filterData}) {
+function Main({setName, setHouse, filterData, name, house, handleReset}) {
   return (
     <main className="main">
-    <Form setName={setName} setHouse={setHouse}/>
+    <Form setName={setName} setHouse={setHouse} name={name} house={house} handleReset={handleReset}/>
     <List filterData={filterData}/>
   </main>
   )
@@ -18,6 +18,8 @@ Main.propTypes = {
       .isRequired,
     setName: PropTypes.func.isRequired,
     setHouse: PropTypes.func.isRequired,
-   
+    name: PropTypes.object.isRequired,
+    house: PropTypes.object.isRequired,
+    handleReset: PropTypes.func.isRequired,   
   };
 export default Main
