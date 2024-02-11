@@ -1,14 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import ls from '../services/LocalSotrage.js';
 import PropTypes from 'prop-types';
 import { Link, useParams } from 'react-router-dom';
 import Gryffindor from '../images/R2oi.gif';
 import Slytherin from '../images/ODND.gif';
 import Hufflepuff from '../images/R2oh.gif';
 import Ravenclaw from '../images/R2og.gif';
-import iGryffindor from '../images/gryffindorDet.jpg';
-import iSlytherin from '../images/slytherinDet.jpg';
-import iHufflepuff from '../images/hufflepuffDet.jpg';
-import iRavenclaw from '../images/ravenclawDet.jpg';
+import iGryffindor from '../images/gryffindor.png';
+import iSlytherin from '../images/slytherin.png';
+import iHufflepuff from '../images/hufflepuff.png';
+import iRavenclaw from '../images/ravenclaw.png';
 import AltGif from '../images/3SIq.gif';
 import '../scss/layout/CharacterDetail.scss';
 
@@ -16,10 +17,23 @@ function CharacterDetail({ data }) {
   const { characterName } = useParams();
   const foundElem = data.filter((item) => item.id === characterName);
   console.log(foundElem[0]);
-  const character = foundElem[0];
+  let character = foundElem[0];
+  //  const [character, setCharacter] = useState(ls.get('detail', {}) || '')
+  //  setCharacter(foundElem[0])
+  if (character === undefined) {
+    character = ls.get('detail', {});
+  }
+
+  useEffect(() => {
+    ls.set('detail', {
+      name: character.name,
+      select: character.house,
+      alive: character.alive,
+      dead: character.dead,
+    });
+  }, [character]);
 
   let houseImageP;
-
   let houseImage;
   if (character.house === 'Gryffindor') {
     houseImage = iGryffindor;
@@ -33,7 +47,7 @@ function CharacterDetail({ data }) {
   } else if (character.house === 'Ravenclaw') {
     houseImage = iRavenclaw;
     houseImageP = Ravenclaw;
-  }  else if (character.house === '') {
+  } else if (character.house === '') {
     houseImageP = AltGif;
   }
 
@@ -57,7 +71,9 @@ function CharacterDetail({ data }) {
   return (
     <main className="main">
       <Link className="linkM" to="/">
-        <button className="linkM__btn">Time-Turner</button>
+        <button className="linkM__btn">          
+        <i className="fa-solid fa-backward"> Time-Turner </i>
+          </button>
       </Link>
       <div className="containerBoard">
         <div className="board">
@@ -67,13 +83,14 @@ function CharacterDetail({ data }) {
             alt={character.name}
           />
           <div className="board__text">
-            <h2>{character.name}</h2>
+            
+            <h2 className="board__text--title">{character.name} </h2>
+            <img className="board__text--img" src={houseImage || ''} />            
             <p>Species: {character.species}</p>
-            <p>Patronus: {character.patronus}</p>
-            <p>Ancestry: {character.ancestry}</p>
+            <p>Patronus: {character.patronus || '-'}</p>
+            <p>Ancestry: {character.ancestry || '-'}</p>
             <p>Status: {alive}</p>
-            <p>House: {character.house}</p>
-            <img className="board__text--img" src={houseImage || ''} />
+            <p>House: {character.house || '-'}</p>
           </div>
         </div>
       </div>

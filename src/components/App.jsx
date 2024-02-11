@@ -6,9 +6,10 @@ import ls from '../services/LocalSotrage.js';
 import Header from './Header';
 import Main from './Main';
 import CharacterDetail from './CharacterDetail';
+import Footer from './Footer.jsx';
 //Css
 import '../scss/App.scss';
-import Footer from './Footer.jsx';
+
 
 //Function APP
 function App() {
@@ -50,7 +51,7 @@ function App() {
   useEffect (()=> {  
     ls.set('data', {
       name: name,
-      select: house,
+      house: house,
       alive: alive,
       dead: dead,
     })

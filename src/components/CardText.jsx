@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import imgGryffindor from '../images/gryffindor.jpg';
-import imgSlytherin from '../images/slytherin.jpg';
-import imgHufflepuff from '../images/hufflepuff.jpg';
-import imgRavenclaw from '../images/ravenclaw.jpg';
+import imgGryffindor from '../images/gryffindor.png';
+import imgSlytherin from '../images/slytherin.png';
+import imgHufflepuff from '../images/hufflepuff.png';
+import imgRavenclaw from '../images/ravenclaw.png';
+import '../scss/layout/Card.scss'
 
 function CardText({ filterData }) {
   let houseImage;

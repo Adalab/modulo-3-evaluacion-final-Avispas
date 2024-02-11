@@ -46,7 +46,7 @@ function Form({ setName, setHouse, name, house, handleReset, handleDead, handleA
           <option value="Slytherin">Slytherin</option>
           <option value="Hufflepuff">Hufflepuff</option>
           <option value="Ravenclaw">Ravenclaw</option>
-          <option value="allHouses">All Houses</option>
+          <option value="allHouses">All characters</option>
         </select>
       </label>
 
@@ -75,7 +75,7 @@ function Form({ setName, setHouse, name, house, handleReset, handleDead, handleA
       </div>
 
       <button className="btn" onClick={handleReset}>
-        Obliviate
+        <i className="fa-solid fa-trash"> Obliviate</i>
       </button>
     </form>
   );

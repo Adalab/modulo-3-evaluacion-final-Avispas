@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 
 function List({ filterData, name }) {
   if (filterData.length === 0) {
-   return <h3 className='error'>There is no character matching with {name} </h3>
+   return <h3 className='error'>There is no character {name} </h3>
   } else {
 
   return (
