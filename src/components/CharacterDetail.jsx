@@ -1,51 +1,79 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link, useParams } from 'react-router-dom';
-import noPhoto from '../images/logo.jpg';
-import Gryffindor from '../images/gryffindorDet.jpg';
-import Slytherin from '../images/slytherinDet.jpg';
-import Hufflepuff from '../images/hufflepuffDet.jpg';
-import Ravenclaw from '../images/ravenclawDet.jpg'; 
+import Gryffindor from '../images/R2oi.gif';
+import Slytherin from '../images/ODND.gif';
+import Hufflepuff from '../images/R2oh.gif';
+import Ravenclaw from '../images/R2og.gif';
+import iGryffindor from '../images/gryffindorDet.jpg';
+import iSlytherin from '../images/slytherinDet.jpg';
+import iHufflepuff from '../images/hufflepuffDet.jpg';
+import iRavenclaw from '../images/ravenclawDet.jpg';
+import AltGif from '../images/3SIq.gif';
 import '../scss/layout/CharacterDetail.scss';
 
-
 function CharacterDetail({ data }) {
-  const { characterName } = useParams();  
+  const { characterName } = useParams();
   const foundElem = data.filter((item) => item.id === characterName);
   console.log(foundElem[0]);
   const character = foundElem[0];
 
+  let houseImageP;
+
   let houseImage;
   if (character.house === 'Gryffindor') {
-    houseImage = Gryffindor;
+    houseImage = iGryffindor;
+    houseImageP = Gryffindor;
   } else if (character.house === 'Slytherin') {
-    houseImage = Slytherin;
+    houseImage = iSlytherin;
+    houseImageP = Slytherin;
   } else if (character.house === 'Hufflepuff') {
-    houseImage = Hufflepuff;
+    houseImage = iHufflepuff;
+    houseImageP = Hufflepuff;
   } else if (character.house === 'Ravenclaw') {
-    houseImage = Ravenclaw;
+    houseImage = iRavenclaw;
+    houseImageP = Ravenclaw;
+  }  else if (character.house === '') {
+    houseImageP = AltGif;
+  }
+
+  let alive;
+  if (character.alive === true) {
+    alive = (
+      <i className="fa-solid fa-heart-pulse">
+        {' '}
+        <span>Alive</span>
+      </i>
+    );
+  } else {
+    alive = (
+      <i className="fa-solid fa-skull">
+        {' '}
+        <span>Dead</span>
+      </i>
+    );
   }
 
   return (
     <main className="main">
       <Link className="linkM" to="/">
-        <button className="linkM__btn">Back</button>
+        <button className="linkM__btn">Time-Turner</button>
       </Link>
-      <div className="board">
-        <img
-          className="board__photo"
-          src={character.image || noPhoto}
-          alt={character.name}
-        />
-        <div >
-        <img src={houseImage || ''}/>
+      <div className="containerBoard">
+        <div className="board">
+          <img
+            className="board__photo"
+            src={character.image || houseImageP}
+            alt={character.name}
+          />
           <div className="board__text">
-          <p>{character.name}</p>
-          <p>{character.species}</p>
-          <p>{character.patronus}</p>
-          <p>{character.ancestry}</p>
-          <p>{character.alive}</p>
-          <p>{character.house}</p>
+            <h2>{character.name}</h2>
+            <p>Species: {character.species}</p>
+            <p>Patronus: {character.patronus}</p>
+            <p>Ancestry: {character.ancestry}</p>
+            <p>Status: {alive}</p>
+            <p>House: {character.house}</p>
+            <img className="board__text--img" src={houseImage || ''} />
           </div>
         </div>
       </div>

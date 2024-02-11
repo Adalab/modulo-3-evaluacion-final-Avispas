@@ -1,12 +1,13 @@
 @import '../core/Variables.scss';
 
 .linkM {
-  text-decoration: none;
+  text-decoration: none; /* quita el subrayado */
+  color: inherit; /* hereda el color del texto */
   padding: 20px;
   display: flex;
-  justify-content: end;
+  width: fit-content;
   &__btn {
-    height: 40px;
+    height: 60px;
     width: 60px;
     box-shadow: 0px 0px 10px 4px #a7964c;
     border: 3px solid black;
@@ -14,29 +15,32 @@
     background-color: #e9d063;
     font-family: $font;
     font-weight: bolder;
+    cursor: pointer;
   }
+}
+.containerBoard{
+  display: flex;
+  justify-content: center;
 }
 .board {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 310px;
+  background: #55534c;
+  border-radius: 5px;
+  border: 2px solid black;
+  box-shadow: 4px 4px black;
+  padding-top: 20px;
   
-  @media (min-width: 768px){
-    flex-direction: row;
-    gap: 70px;
-    padding-top: 20px;
-  }
   &__photo {
     border: 3px solid;
-    height: 350px;
-    width: 300px;
+    width: 250px;
     border-radius: 50% 50% 50% 50%;
     box-shadow: 0px 0px 35px 4px #55534c;
   }
   &__text {
-    box-shadow: 0px 0px 35px 4px #55534c;
-    background-color: #55534c;
     width: 250px;
     display: flex;
     flex-direction: column;
@@ -44,5 +48,10 @@
     font-family: $font;
     position: relative;
     padding: 10px;
+    &--img{
+      width:300px;
+      padding-top: 20px;
+
+    }
   }
 }

@@ -4,13 +4,14 @@ import PropTypes from 'prop-types';
 
 import '../scss/layout/Form.scss';
 
-function Form({ setName, setHouse, name, house, handleReset }) {
-  const handleKeyPress = (ev) => {
-    if (ev.key === 'Enter' ) {
-      ev.preventDefault();
-      console.log('Enter presionado');
-    }
-   };
+function Form({ setName, setHouse, name, house, handleReset, handleDead, handleAlive, dead, alive }) {
+  // const handleKeyPress = (ev) => {
+  //   if (ev.key === 'Enter') {
+  //     ev.preventDefault();
+  //     console.log('Enter presionado');
+  //   }
+  // };
+
   return (
     <form className="form">
       <label htmlFor="name" className="form__label">
@@ -19,7 +20,7 @@ function Form({ setName, setHouse, name, house, handleReset }) {
           onChange={(ev) => {
             setName(ev.target.value);
           }}
-          onKeyPress={handleKeyPress}
+          // onKeyPress={handleKeyPress}
           value={name}
           type="text"
           id="name"
@@ -35,6 +36,7 @@ function Form({ setName, setHouse, name, house, handleReset }) {
           onChange={(ev) => {
             setHouse(ev.target.value);
           }}
+          // onKeyPress={handleKeyPress}
           value={house}
           className="form__label--input opt"
           name="house"
@@ -44,9 +46,37 @@ function Form({ setName, setHouse, name, house, handleReset }) {
           <option value="Slytherin">Slytherin</option>
           <option value="Hufflepuff">Hufflepuff</option>
           <option value="Ravenclaw">Ravenclaw</option>
+          <option value="allHouses">All Houses</option>
         </select>
       </label>
-      <button className='btn' onClick={handleReset}>Reset</button>
+
+      <div className="alive">
+        <label htmlFor="alive" className="alive__label">
+          <i className="fa-solid fa-heart-pulse"> </i>
+          Alive
+          <input 
+          className="check" 
+          type="checkbox"
+          checked={alive}
+          onChange={handleAlive}
+          
+          ></input>
+        </label>
+        <label htmlFor="alive" className="alive__label">
+          <i className="fa-solid fa-skull"> </i>
+          Dead
+          <input 
+          className="check" 
+          type="checkbox"
+          checked={dead}
+          onChange={handleDead}
+          ></input>
+        </label>
+      </div>
+
+      <button className="btn" onClick={handleReset}>
+        Obliviate
+      </button>
     </form>
   );
 }
@@ -56,5 +86,9 @@ Form.propTypes = {
   name: PropTypes.object.isRequired,
   house: PropTypes.object.isRequired,
   handleReset: PropTypes.func.isRequired,
+  handleDead: PropTypes.func.isRequired,
+  handleAlive: PropTypes.func.isRequired,
+  dead: PropTypes.object.isRequired,
+  alive: PropTypes.object.isRequired,
 };
 export default Form;

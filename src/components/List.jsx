@@ -6,8 +6,10 @@ import '../scss/layout/List.scss';
 import { Link } from 'react-router-dom';
 
 
-function List({ filterData }) {
-console.log (filterData);
+function List({ filterData, name }) {
+  if (filterData.length === 0) {
+   return <h3 className='error'>There is no character matching with {name} </h3>
+  } else {
 
   return (
     <ul className="list">
@@ -26,6 +28,7 @@ console.log (filterData);
       ))}
     </ul>
   );
+  }
 }
 
 
@@ -33,5 +36,6 @@ console.log (filterData);
 List.propTypes = {
   filterData: PropTypes.oneOfType([PropTypes.array, PropTypes.object])
     .isRequired,
+  name: PropTypes.object.isRequired,
 };
 export default List;

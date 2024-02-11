@@ -1,0 +1,9 @@
+@import '../core/Variables.scss';
+.footer{
+    background-color: $dark;
+    color: white;
+    padding: 15px;
+    font-family: $font;
+    text-align: end;
+    min-height: auto;
+}

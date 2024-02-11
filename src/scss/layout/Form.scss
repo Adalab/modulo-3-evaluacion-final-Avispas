@@ -29,7 +29,7 @@
 .btn {
   cursor: pointer;
   height: 40px;
-  width: 60px;
+  width: 80px;
   box-shadow: 0px 0px 35px 4px #a7964c;
   border: 3px solid black;
   border-radius: 10px;
@@ -39,4 +39,24 @@
 }
 .opt {
   cursor: pointer;
+}
+.alive{
+  display: flex;
+  gap: 30px;
+  &__label{
+   display: flex;
+   align-items: center;
+   gap: 10px;
+  }
+}
+
+.check{
+  width: 30px;
+  height: 30px;
+}
+.check:checked{
+  
+ color: #e9d063;
+ background-color: #e9d063;
+  
 }
