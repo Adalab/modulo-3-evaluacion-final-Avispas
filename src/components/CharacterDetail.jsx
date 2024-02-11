@@ -78,7 +78,7 @@ function CharacterDetail({ data }) {
       <div className="containerBoard">
         <div className="board">
           <img
-            className="board__photo"
+            className={`board__photo ${character.house}`}
             src={character.image || houseImageP}
             alt={character.name}
           />
