@@ -18,12 +18,12 @@ Main.propTypes = {
       .isRequired,
     setName: PropTypes.func.isRequired,
     setHouse: PropTypes.func.isRequired,
-    name: PropTypes.object.isRequired,
-    house: PropTypes.object.isRequired,
+    name: PropTypes.string.isRequired,
+    house: PropTypes.string.isRequired,
     handleReset: PropTypes.func.isRequired,   
     handleDead: PropTypes.func.isRequired,
     handleAlive: PropTypes.func.isRequired,
-    dead: PropTypes.func.isRequired,
-    alive: PropTypes.func.isRequired,
+    dead: PropTypes.bool.isRequired,
+    alive: PropTypes.bool.isRequired,
   };
 export default Main

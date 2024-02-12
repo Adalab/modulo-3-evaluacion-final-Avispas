@@ -83,12 +83,12 @@ function Form({ setName, setHouse, name, house, handleReset, handleDead, handleA
 Form.propTypes = {
   setName: PropTypes.func.isRequired,
   setHouse: PropTypes.func.isRequired,
-  name: PropTypes.object.isRequired,
-  house: PropTypes.object.isRequired,
+  name: PropTypes.string.isRequired,
+  house: PropTypes.string.isRequired,
   handleReset: PropTypes.func.isRequired,
   handleDead: PropTypes.func.isRequired,
   handleAlive: PropTypes.func.isRequired,
-  dead: PropTypes.object.isRequired,
-  alive: PropTypes.object.isRequired,
+  dead: PropTypes.bool.isRequired,
+  alive: PropTypes.bool.isRequired,
 };
 export default Form;

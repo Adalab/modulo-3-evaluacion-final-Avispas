@@ -36,6 +36,6 @@ function List({ filterData, name }) {
 List.propTypes = {
   filterData: PropTypes.oneOfType([PropTypes.array, PropTypes.object])
     .isRequired,
-  name: PropTypes.object.isRequired,
+  name: PropTypes.string.isRequired,
 };
 export default List;
