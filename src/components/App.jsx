@@ -44,7 +44,6 @@ function App() {
     return a.name.localeCompare(b.name);
   })
   
-
   .filter ((character) => character.name.toLowerCase().includes(name.toLowerCase())) 
   
   //Mete la información de los imputs en el LocalStorage

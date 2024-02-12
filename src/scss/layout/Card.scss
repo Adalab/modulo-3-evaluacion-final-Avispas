@@ -9,7 +9,7 @@
         height: 300px;
         width: 250px;
         border-radius: 50% 50% 50% 50%;
-        box-shadow: 0px 0px 35px 4px #55534c;
+        box-shadow: 0px 0px 35px 4px $shadowGrey;
         &--img{
         border: 2px solid black;
         box-shadow: 4px 4px black;
@@ -41,22 +41,22 @@
     }
 }
 .Gryffindor:hover{
-    box-shadow: 0px 0px 35px 4px #bd4f40;
+    box-shadow: 0px 0px 35px 4px $red;
     cursor:pointer;
     transform: scale(1.2);
 }
 .Slytherin:hover{
-    box-shadow: 0px 0px 35px 4px #2c8833;
+    box-shadow: 0px 0px 35px 4px $green;
     cursor:pointer;
     transform: scale(1.2);
 }
 .Hufflepuff:hover{
-    box-shadow: 0px 0px 35px 4px #e9d063;
+    box-shadow: 0px 0px 35px 4px $bckgrndYellow;
     cursor:pointer;
     transform: scale(1.2);
 }
 .Ravenclaw:hover{
-    box-shadow: 0px 0px 35px 4px #3c64bb;
+    box-shadow: 0px 0px 35px 4px $blue;
     cursor:pointer;
     transform: scale(1.2);
 }

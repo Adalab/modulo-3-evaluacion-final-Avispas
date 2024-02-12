@@ -5,12 +5,12 @@ import PropTypes from 'prop-types';
 import '../scss/layout/Form.scss';
 
 function Form({ setName, setHouse, name, house, handleReset, handleDead, handleAlive, dead, alive }) {
-  // const handleKeyPress = (ev) => {
-  //   if (ev.key === 'Enter') {
-  //     ev.preventDefault();
-  //     console.log('Enter presionado');
-  //   }
-  // };
+  const handleKeyPress = (ev) => {
+    if (ev.key === 'Enter') {
+      ev.preventDefault();
+      console.log('Enter presionado');
+    }
+  };
 
   return (
     <form className="form">
@@ -20,7 +20,7 @@ function Form({ setName, setHouse, name, house, handleReset, handleDead, handleA
           onChange={(ev) => {
             setName(ev.target.value);
           }}
-          // onKeyPress={handleKeyPress}
+          onKeyPress={handleKeyPress}
           value={name}
           type="text"
           id="name"
@@ -36,7 +36,7 @@ function Form({ setName, setHouse, name, house, handleReset, handleDead, handleA
           onChange={(ev) => {
             setHouse(ev.target.value);
           }}
-          // onKeyPress={handleKeyPress}
+          onKeyPress={handleKeyPress}
           value={house}
           className="form__label--input opt"
           name="house"

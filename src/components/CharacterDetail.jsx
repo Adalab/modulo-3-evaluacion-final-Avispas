@@ -75,15 +75,14 @@ function CharacterDetail({ data }) {
         <i className="fa-solid fa-backward"> Time-Turner </i>
           </button>
       </Link>
-      <div className="containerBoard">
-        <div className="board">
+      <article className="containerBoard">
+        <section className="board">
           <img
             className={`board__photo ${character.house}`}
             src={character.image || houseImageP}
             alt={character.name}
           />
-          <div className="board__text">
-            
+          <section className="board__text">            
             <h2 className="board__text--title">{character.name} </h2>
             <img className="board__text--img" src={houseImage || ''} />            
             <p>Species: {character.species}</p>
@@ -91,9 +90,9 @@ function CharacterDetail({ data }) {
             <p>Ancestry: {character.ancestry || '-'}</p>
             <p>Status: {alive}</p>
             <p>House: {character.house || '-'}</p>
-          </div>
-        </div>
-      </div>
+          </section>
+        </section>
+      </article>
     </main>
   );
 }

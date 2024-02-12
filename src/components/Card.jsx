@@ -23,12 +23,12 @@ function Card({ filterData }) {
     houseImage = AltGif;
   }
   return (
-    <>
+    <article>
         <div className="card__boxImg" id={filterData.id}>
           <img className={`card__boxImg--img ${filterData.house}`} src={filterData.image || houseImage} alt="ad" />
         </div>
         <CardText filterData={filterData} />
-    </>     
+    </article>     
   );
 }
 Card.propTypes = {
