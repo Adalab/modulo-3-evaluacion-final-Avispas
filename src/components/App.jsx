@@ -1,12 +1,13 @@
 //Components
 import React, { useEffect, useState } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Link, Route, Routes } from 'react-router-dom';
 import callToApi from '../services/Api';
 import ls from '../services/LocalSotrage.js';
 import Header from './Header';
 import Main from './Main';
 import CharacterDetail from './CharacterDetail';
 import Footer from './Footer.jsx';
+import NotFoundPage from './NotFoundPage.jsx';
 //Css
 import '../scss/App.scss';
 
@@ -82,7 +83,9 @@ const filteredData = [...filterData].filter((character) => {
       <Routes>
         <Route path='/' element={ <Main setName={setName} setHouse={setHouse} filterData={filteredData} name={name} house={house} handleReset={handleReset} handleDead={handleDead} handleAlive={handleAlive} dead={dead} alive={alive}/>}/>
         <Route path='/CharacterDetail/:characterName' element={<CharacterDetail data={data} />}/>
+        <Route path='*' element={<NotFoundPage />} />
       </Routes>
+      
       <Footer/>
     </>
   );
