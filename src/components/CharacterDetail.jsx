@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import ls from '../services/LocalSotrage.js';
 import PropTypes from 'prop-types';
-import NotFoundPage from './NotFoundPage.jsx'
-import { Link, useParams } from 'react-router-dom';
+import NotFoundPage from './NotFoundPage.jsx';
+import TimeTurner from './TimeTurner.jsx';
+import { useParams } from 'react-router-dom';
 import Gryffindor from '../images/R2oi.gif';
 import Slytherin from '../images/ODND.gif';
 import Hufflepuff from '../images/R2oh.gif';
@@ -67,13 +68,9 @@ function CharacterDetail({ data }) {
     );
   }
 
-  return (
- foundElem.length !==0 ? (  <main className="main">
-      <Link className="linkM" to="/">
-        <button className="linkM__btn">          
-        <i className="fa-solid fa-backward"> Time-Turner </i>
-          </button>
-      </Link>
+  return foundElem.length !== 0 ? (
+    <main className="main">
+      <TimeTurner />
       <article className="containerBoard">
         <section className="board">
           <img
@@ -81,9 +78,9 @@ function CharacterDetail({ data }) {
             src={character.image || houseImageP}
             alt={character.name}
           />
-          <section className="board__text">            
+          <section className="board__text">
             <h2 className="board__text--title">{character.name} </h2>
-            <img className="board__text--img" src={houseImage || ''} />            
+            <img className="board__text--img" src={houseImage || ''} />
             <p>Species: {character.species}</p>
             <p>Patronus: {character.patronus || '-'}</p>
             <p>Ancestry: {character.ancestry || '-'}</p>
@@ -93,10 +90,10 @@ function CharacterDetail({ data }) {
         </section>
       </article>
     </main>
-    )  : (
+  ) : (
     <NotFoundPage />
-  )
-)}
+  );
+}
 
 CharacterDetail.propTypes = {
   data: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
